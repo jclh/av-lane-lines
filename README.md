@@ -8,13 +8,41 @@
 
 ## Overview
 
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
+This tool detects lane lines in images using Python and OpenCV (Open-Source Computer Vision). OpenCV is a package that has many useful tools for analyzing images.  
 
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
+Main files in the repository:
 
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
+* `Proj-1-LaneLines.ipynb`: Jupyter notebook including main code to (1) import images/videos, (2) detect the lane lines, and (3) draw the detected lines back onto the images/videos. 
+* `~test_images_output/`: Folder of output of the tool after processing images in `~test_images/`.
+* `~test_videos_output/`: Folder of output of the tool after processing videos in `~test_videos/`.
 
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
+
+## Motivation
+
+When we drive, we use visual information to sense where we are and to decide where to go. The lines on the road show us where the lanes are, so we use them as our constant reference for where to steer the vehicle. 
+
+In the process of developing an autonomous vehicle that works with existing roads, one of the first goals we would like to achieve is to automatically detect lane lines using computer vision.
+ 
+
+## Usage Example
+
+The Jupyter Project highly recommends new users to install [Anaconda](https://www.anaconda.com/distribution/); since it conveniently installs Python, the Jupyter Notebook, and other commonly used packages for scientific computing and data science.
+
+Use the following installation steps:
+
+1. Download Anaconda.
+
+2. Install the version of Anaconda which you downloaded, following the instructions on the download page.
+
+3. To run the notebook:
+
+```
+jupyter notebook Proj-1-LaneLines.ipynb
+```
+
+## Software Dependencies
+
+Running this tool locally may be challenging given that the necessary image processing packages may be missing. A straightforward way to overcome this problem is to use [Udacity's Anaconda environment](doc/configure_via_anaconda.md), which was specifically built to provide unified software dependency support for projects like this one.
 
 
 ## Pipeline Description
@@ -62,36 +90,40 @@ Please see output of pipeline on test images below:
 ---
 
 
-## Potential Pipeline Shortcomings
+## Potential Shortcomings
 
-1. The main potential shortcoming of my pipeline is that it is susceptible to unexpected edges that may occur between the lane lines. Edges in the middle of the lane may contribute more Hough lines to the median statistics (used to extrapolate a single lane) than the actual lane-line edges, especially when the line is not solid.
+1. The main potential shortcoming of the tool is that it is susceptible to unexpected edges that may occur between the lane lines. Edges in the middle of the lane may contribute more Hough lines to the median statistics (used to extrapolate a single lane) than the actual lane-line edges, especially when the lane line is not solid.
 
-2. The other shortcoming of the pipeline is that it is not optimized for video, which makes the output lane lines a little unstable or shaky on video.
-
-
-## Possible improvements to your pipeline
-
-1. The most important goal for improvement of the pipeline would be to make it more robust to edges in the middle of the lane. The following ideas come to mind:
-	* Implement a more sophisticated separation of Hough lines; one option would be to define, based on their slope, three categories of Hough lines: right line, left line, and noise-edges. This may perform better than my single demarcation into right line and left line.
-	* Take into account the relation between the two lines of a lane, in order to rule out unreasonable cases. For example, we may want to write rules about the admissible range of angles at which the extrapolated lane lines may cross (i.e. a 90 degree vertex would be suspicious).
-
-2. In order to address the shortcoming concerning the application of the pipeline to a video stream (shortcoming #2 of the previous section), a possible improvement would be to include some type of smoothing function. The smoothing function would take advantage of the fact that when we are processing video the successive images are not independent from each other. In other words, there is useful information about the position of the lane lines that may be carried over to the processing of the next image in the series. I presume that there is a way to do this so that the output on video is smoother.
+2. The other shortcoming of the tool is that it is not optimized for video, which makes the output lane lines a little unstable and shaky on video.
 
 
-## The Project
+## Possible Improvements
 
-## If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
+1. The most important goal for improvement would be to make the tool more robust to edges in the middle of the lane. The following ideas come to mind:
+	* Implement a more sophisticated separation of Hough lines; one option would be to define three categories of Hough lines, based on their slope: right line, left line, and noise-edges. This may perform better than the binary demarcation into right line and left line.
+	* Take into account the logical relation between the two lines of a lane, in order to rule out unreasonable cases. For example, we may want to write rules about the admissible range of angles at which the extrapolated lane lines may cross (i.e. a 90 degree vertex would be suspicious).
 
-**Step 1:** Set up the [CarND Term1 Starter Kit](https://classroom.udacity.com/nanodegrees/nd013/parts/fbf77062-5703-404e-b60c-95b78b2f3f9e/modules/83ec35ee-1e02-48a5-bdb7-d244bd47c2dc/lessons/8c82408b-a217-4d09-b81d-1bda4c6380ef/concepts/4f1870e0-3849-43e4-b670-12e6f2d4b7a7) if you haven't already.
+2. In order to address the shortcoming concerning the application of the tool to a video stream (shortcoming #2 of the previous section), a possible improvement would be to include a smoothing function. The smoothing function would take advantage of the fact that when we are processing video the successive images are not independent from each other. In other words, there is useful information about the position of the lane lines that may be carried over to the processing of the next image in the series. I presume there is a way to do this so that the video output looks smoother.
 
-**Step 2:** Open the code in a Jupyter Notebook
 
-You will complete the project code in a Jupyter notebook.  If you are unfamiliar with Jupyter Notebooks, check out <A HREF="https://www.packtpub.com/books/content/basics-jupyter-notebook-and-python" target="_blank">Cyrille Rossant's Basics of Jupyter Notebook and Python</A> to get started.
+## Acknowledgments
 
-Jupyter is an Ipython notebook where you can run blocks of code and see results interactively.  All the code for this project is contained in a Jupyter notebook. To start Jupyter in your browser, use terminal to navigate to your project directory and then run the following command at the terminal prompt (be sure you've activated your Python 3 carnd-term1 environment as described in the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) installation instructions!):
+* [Udacity: Self-Driving Car Engineer Nanodegree program](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013).
+* Jupyter Documentation: [Installing Jupyter Notebook](https://jupyter.readthedocs.io/en/latest/install.html)
 
-`> jupyter notebook`
 
-A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
+## Author
 
-**Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
+Juan Carlos Lopez
+[GitHub](https://github.com/jclh/)
+[LinkedIn](https://www.linkedin.com/in/jclopezh/)
+jc.lopezh@gmail.com
+
+
+## Contributing
+
+1. Fork it (https://github.com/jclh/av-lane-lines/fork)
+2. Create your feature branch (git checkout -b feature/fooBar)
+3. Commit your changes (git commit -am 'Add some fooBar')
+4. Push to the branch (git push origin feature/fooBar)
+5. Create a new Pull Request
