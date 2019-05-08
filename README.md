@@ -1,5 +1,5 @@
 # Finding lane lines on the road
-## Udacity Autonomous Vehicles Nanodegree (Project 1)
+### Udacity Program: Autonomous Vehicle Engineer (Project 1)
 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
