@@ -1,14 +1,17 @@
 # Finding lane lines on the road
-### Udacity Program: Autonomous Vehicle Engineer (Project 1)
+### [Udacity](https://www.udacity.com/) Program: Autonomous Vehicle Engineer, Project 1
 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-<img src="test_images_output/processed_solidYellowCurve2.jpg" width="480" alt="Combined Image" />
+> Example of inference:
 
+<p align="center">
+  <img src="test_images_output/processed_solidYellowCurve2.jpg" width="480" alt="Combined Image" />
+</p>
 
 ## Overview
 
-This tool detects lane lines in images using Python and OpenCV (Open-Source Computer Vision). OpenCV is a package that has many useful tools for analyzing images.  
+This tool detects lane lines in images using Python and [OpenCV (Open-Source Computer Vision)](https://pypi.org/project/opencv-python/). OpenCV is a package that has many useful tools for analyzing images.  
 
 Main files in the repository:
 
@@ -90,20 +93,21 @@ Please see output of pipeline on test images below:
 ---
 
 
-## Potential Shortcomings
+## Shortcomings of the pipeline
 
 1. The main potential shortcoming of the tool is that it is susceptible to unexpected edges that may occur between the lane lines. Edges in the middle of the lane may contribute more Hough lines to the median statistics (used to extrapolate a single lane) than the actual lane-line edges, especially when the lane line is not solid.
 
 2. The other shortcoming of the tool is that it is not optimized for video, which makes the output lane lines a little unstable and shaky on video.
 
 
-## Possible Improvements
+## Recommendations for improvement
 
-1. The most important goal for improvement would be to make the tool more robust to edges in the middle of the lane. The following ideas come to mind:
-	* Implement a more sophisticated separation of Hough lines; one option would be to define three categories of Hough lines, based on their slope: right line, left line, and noise-edges. This may perform better than the binary demarcation into right line and left line.
-	* Take into account the logical relation between the two lines of a lane, in order to rule out unreasonable cases. For example, we may want to write rules about the admissible range of angles at which the extrapolated lane lines may cross (i.e. a 90 degree vertex would be suspicious).
+The most important goal for improvement would be to make the tool more robust to edges in the middle of the lane. The following ideas come to mind:
 
-2. In order to address the shortcoming concerning the application of the tool to a video stream (shortcoming #2 of the previous section), a possible improvement would be to include a smoothing function. The smoothing function would take advantage of the fact that when we are processing video the successive images are not independent from each other. In other words, there is useful information about the position of the lane lines that may be carried over to the processing of the next image in the series. I presume there is a way to do this so that the video output looks smoother.
+1. Implement a more sophisticated separation of Hough lines; one option would be to define three categories of Hough lines, based on their slope: right line, left line, and noise-edges. This may perform better than the binary demarcation into right line and left line.
+2. Take into account the logical relation between the two lines of a lane, in order to rule out unreasonable cases. For example, we may want to write rules about the admissible range of angles at which the extrapolated lane lines may cross (i.e. a 90 degree vertex would be suspicious).
+
+In order to address the shortcoming concerning the application of the tool to a video stream (shortcoming #2 of the previous section), a possible improvement would be to include a smoothing function. The smoothing function would take advantage of the fact that when we are processing video the successive images are not independent from each other. In other words, there is useful information about the position of the lane lines that may be carried over to the processing of the next image in the series. I presume there is a way to do this so that the video output looks smoother.
 
 
 ## Acknowledgments
