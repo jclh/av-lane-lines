@@ -112,16 +112,17 @@ In order to address the shortcoming concerning the application of the tool to a 
 
 ## Acknowledgments
 
-* [Udacity: Self-Driving Car Engineer Nanodegree program](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013).
-* Jupyter Documentation: [Installing Jupyter Notebook](https://jupyter.readthedocs.io/en/latest/install.html)
+- [Udacity: Self-Driving Car Engineer Nanodegree program](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013).
+- Jupyter Documentation: [Installing Jupyter Notebook](https://jupyter.readthedocs.io/en/latest/install.html)
 
 
 ## Author
 
-Juan Carlos Lopez — jc.lopezh@gmail.com
+Juan Carlos Lopez
 
-[GitHub](https://github.com/jclh/)
-[LinkedIn](https://www.linkedin.com/in/jclopezh/)
+- jc.lopezh@gmail.com
+- [GitHub](https://github.com/jclh/)
+- [LinkedIn](https://www.linkedin.com/in/jclopezh/)
 
 
 ## Contributing
