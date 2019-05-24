@@ -119,8 +119,11 @@ In order to address the shortcoming concerning the application of the tool to a 
 ## Author
 
 Juan Carlos Lopez
+
 [GitHub](https://github.com/jclh/)
+
 [LinkedIn](https://www.linkedin.com/in/jclopezh/)
+
 jc.lopezh@gmail.com
 
 
